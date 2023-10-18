@@ -3,7 +3,7 @@ package sortlevel;
 public class SortLevel {
 
     public static void SelectionSortStep(int[] array, int i) {
-        int index = findIndexMinVal(array, i + 1);
+        int index = findMinValIndex(array, i + 1, 1);
         if (array[index] < array[i]) {
             int val = array[i];
             array[i] = array[index];
@@ -26,9 +26,21 @@ public class SortLevel {
         return isNotChanged;
     }
 
-    private static int findIndexMinVal(int[] array, int start) {
+    public static void InsertionSortStep(int[] array, int step, int i) {
+        for (int j = i; j < array.length - step; j += step) {
+            int index = findMinValIndex(array, j + step, step);
+
+            if (array[index] < array[j]) {
+                int val = array[j];
+                array[j] = array[index];
+                array[index] = val;
+            }
+        }
+    }
+
+    private static int findMinValIndex(int[] array, int start, int step) {
         int index = start;
-        for (int i = start; i < array.length; i++) {
+        for (int i = start; i < array.length; i += step) {
             if (array[i] < array[index]) {
                 index = i;
             }
