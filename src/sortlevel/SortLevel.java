@@ -1,5 +1,10 @@
 package sortlevel;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class SortLevel {
 
     public static void SelectionSortStep(int[] array, int i) {
@@ -36,6 +41,14 @@ public class SortLevel {
                 array[index] = val;
             }
         }
+    }
+
+    public static ArrayList KnuthSequence(int array_size) {
+        return (ArrayList) IntStream.iterate(1, i -> 3 * i + 1)
+                .limit(array_size)
+                .boxed()
+                .sorted(Collections.reverseOrder())
+                .collect(Collectors.toList());
     }
 
     private static int findMinValIndex(int[] array, int start, int step) {
