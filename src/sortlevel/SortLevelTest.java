@@ -17,6 +17,7 @@ public class SortLevelTest {
             SortLevel.SelectionSortStep(arr, i);
         }
 
+        assertEquals(sortedArr.length, arr.length);
         for (int i = 0; i < arr.length; i++) {
             assertEquals(arr[i], sortedArr[i]);
         }
@@ -29,8 +30,9 @@ public class SortLevelTest {
 
         while (! SortLevel.BubbleSortStep(arr)) {}
 
+        assertEquals(sortedArr.length, arr.length);
         for (int i = 0; i < arr.length; i++) {
-            assertEquals(arr[i], sortedArr[i]);
+            assertEquals(sortedArr[i], arr[i]);
         }
     }
 
@@ -43,51 +45,95 @@ public class SortLevelTest {
 
         SortLevel.InsertionSortStep(arr, 3, 0);
 
+        assertEquals(firstStep.length, arr.length);
         for (int i = 0; i < arr.length; i++) {
-            assertEquals(arr[i], firstStep[i]);
+            assertEquals(firstStep[i], arr[i]);
         }
 
         SortLevel.InsertionSortStep(arr, 3, 1);
 
+        assertEquals(secondStep.length, arr.length);
         for (int i = 0; i < arr.length; i++) {
-            assertEquals(arr[i], secondStep[i]);
+            assertEquals(secondStep[i], arr[i]);
         }
 
         SortLevel.InsertionSortStep(arr, 3, 2);
 
+        assertEquals(thirdStep.length, arr.length);
         for (int i = 0; i < arr.length; i++) {
-            assertEquals(arr[i], thirdStep[i]);
+            assertEquals(thirdStep[i], arr[i]);
         }
 
         SortLevel.InsertionSortStep(arr, 3, 3);
 
+        assertEquals(thirdStep.length, arr.length);
         for (int i = 0; i < arr.length; i++) {
-            assertEquals(arr[i], thirdStep[i]);
+            assertEquals(thirdStep[i], arr[i]);
         }
     }
 
     @Test
     void knuthSequenceTest() {
-        int[] first = new int[] {4,1};
-        int[] second = new int[] {40,13,4,1};
-        int[] third = new int[] {364,121,40,13,4,1};
+        int[] first = new int[] {1};
+        int[] second = new int[] {4,1};
+        int[] third = new int[] {13,4,1};
+        int[] fourth = new int[] {40,13,4,1};
+        int[] fifth = new int[] {121,40,13,4,1};
 
-        ArrayList list = SortLevel.KnuthSequence(2);
+        ArrayList list = SortLevel.KnuthSequence(4);
 
+        assertEquals(first.length, list.size());
         for (int i = 0; i < first.length; i++) {
-            assertEquals(list.get(i), first[i]);
+            assertEquals(first[i], list.get(i));
         }
 
-        list = SortLevel.KnuthSequence(4);
+        list = SortLevel.KnuthSequence(5);
 
+        assertEquals(second.length, list.size());
         for (int i = 0; i < second.length; i++) {
-            assertEquals(list.get(i), second[i]);
+            assertEquals(second[i], list.get(i));
         }
 
-        list = SortLevel.KnuthSequence(6);
+        list = SortLevel.KnuthSequence(13);
 
+        assertEquals(second.length, list.size());
+        for (int i = 0; i < second.length; i++) {
+            assertEquals(second[i], list.get(i));
+        }
+
+        list = SortLevel.KnuthSequence(14);
+
+        assertEquals(third.length, list.size());
         for (int i = 0; i < third.length; i++) {
-            assertEquals(list.get(i), third[i]);
+            assertEquals(third[i], list.get(i));
+        }
+
+        list = SortLevel.KnuthSequence(40);
+
+        assertEquals(third.length, list.size());
+        for (int i = 0; i < third.length; i++) {
+            assertEquals(third[i], list.get(i));
+        }
+
+        list = SortLevel.KnuthSequence(41);
+
+        assertEquals(fourth.length, list.size());
+        for (int i = 0; i < fourth.length; i++) {
+            assertEquals(fourth[i], list.get(i));
+        }
+
+        list = SortLevel.KnuthSequence(121);
+
+        assertEquals(fourth.length, list.size());
+        for (int i = 0; i < fourth.length; i++) {
+            assertEquals(fourth[i], list.get(i));
+        }
+
+        list = SortLevel.KnuthSequence(122);
+
+        assertEquals(fifth.length, list.size());
+        for (int i = 0; i < fifth.length; i++) {
+            assertEquals(fifth[i], list.get(i));
         }
 
         int[] arr = new int[] {15,14,13,12,11,10,9,8,7,6,5,4,3,2,1};
@@ -101,8 +147,9 @@ public class SortLevelTest {
             }
         });
 
+        assertEquals(sortedArr.length, arr.length);
         for (int i = 0; i < arr.length; i++) {
-            assertEquals(arr[i], sortedArr[i]);
+            assertEquals(sortedArr[i], arr[i]);
         }
     }
 }
