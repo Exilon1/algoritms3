@@ -68,11 +68,11 @@ public class SortLevelTest {
 
     @Test
     void knuthSequenceTest() {
-        int[] first = new int[] {13,4,1};
+        int[] first = new int[] {4,1};
         int[] second = new int[] {40,13,4,1};
-        int[] third = new int[] {121,40,13,4,1};
+        int[] third = new int[] {364,121,40,13,4,1};
 
-        ArrayList list = SortLevel.KnuthSequence(3);
+        ArrayList list = SortLevel.KnuthSequence(2);
 
         for (int i = 0; i < first.length; i++) {
             assertEquals(list.get(i), first[i]);
@@ -84,7 +84,7 @@ public class SortLevelTest {
             assertEquals(list.get(i), second[i]);
         }
 
-        list = SortLevel.KnuthSequence(5);
+        list = SortLevel.KnuthSequence(6);
 
         for (int i = 0; i < third.length; i++) {
             assertEquals(list.get(i), third[i]);
