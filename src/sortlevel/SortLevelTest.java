@@ -80,7 +80,14 @@ public class SortLevelTest {
         int[] fourth = new int[] {40,13,4,1};
         int[] fifth = new int[] {121,40,13,4,1};
 
-        ArrayList list = SortLevel.KnuthSequence(4);
+        ArrayList list = SortLevel.KnuthSequence(1);
+
+        assertEquals(first.length, list.size());
+        for (int i = 0; i < first.length; i++) {
+            assertEquals(first[i], list.get(i));
+        }
+
+        list = SortLevel.KnuthSequence(4);
 
         assertEquals(first.length, list.size());
         for (int i = 0; i < first.length; i++) {

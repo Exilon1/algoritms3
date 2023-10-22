@@ -45,7 +45,7 @@ public class SortLevel {
 
     public static ArrayList KnuthSequence(int array_size) {
         return (ArrayList) IntStream.iterate(1, i -> 3 * i + 1)
-                .takeWhile(v -> v < array_size)
+                .takeWhile(v -> (array_size == 1 && v == 1) || (v < array_size))
                 .boxed()
                 .sorted(Collections.reverseOrder())
                 .collect(Collectors.toList());
