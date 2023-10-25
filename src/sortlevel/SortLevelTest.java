@@ -159,4 +159,17 @@ public class SortLevelTest {
             assertEquals(sortedArr[i], arr[i]);
         }
     }
+
+    @Test
+    void arrayChunk() {
+        int[] arr = new int[] {7,5,6,4,3,1,2};
+        int[] sortedArr = new int[] {2,1,3,4,6,5,7};
+
+        assertEquals(3, SortLevel.ArrayChunk(arr));
+
+        assertEquals(sortedArr.length, arr.length);
+        for (int i = 0; i < arr.length; i++) {
+            assertEquals(sortedArr[i], arr[i]);
+        }
+    }
 }

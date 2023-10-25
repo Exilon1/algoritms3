@@ -51,6 +51,56 @@ public class SortLevel {
                 .collect(Collectors.toList());
     }
 
+    public static int ArrayChunk(int[] M) {
+        int index;
+
+        out:
+        while (true) {
+            index = M.length /2;
+            int n = M[index];
+
+            int iOne = 0;
+            int iTwo = M.length - 1;
+
+            while (true) {
+                while (M[iOne] < n) {
+                    iOne++;
+                }
+
+                while (M[iTwo] > n) {
+                    iTwo--;
+                }
+
+                if (iOne == iTwo - 1 && M[iOne] > M[iTwo]) {
+                    int val = M[iOne];
+                    M[iOne] = M[iTwo];
+                    M[iTwo] = val;
+
+                    continue out;
+                }
+
+                if (iOne == iTwo || (iOne == iTwo - 1 && M[iOne] < M[iTwo])) {
+                    break out;
+                }
+
+                int val = M[iOne];
+                M[iOne] = M[iTwo];
+                M[iTwo] = val;
+
+                if (iOne == index) {
+                    index = iTwo;
+                    continue;
+                }
+
+                if (iTwo == index) {
+                    index = iOne;
+                }
+            }
+        }
+
+        return index;
+    }
+
     private static int findMinValIndex(int[] array, int start, int step) {
         int index = start;
         for (int i = start; i < array.length; i += step) {
