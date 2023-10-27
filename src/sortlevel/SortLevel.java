@@ -101,6 +101,58 @@ public class SortLevel {
         return index;
     }
 
+    public static void QuickSort(int[] array, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+
+        out:
+        while (true) {
+            int index = (left + right + 1)/2;
+            int n = array[index];
+
+            int iOne = left;
+            int iTwo = right;
+
+            while (true) {
+                while (array[iOne] < n) {
+                    iOne++;
+                }
+
+                while (array[iTwo] > n) {
+                    iTwo--;
+                }
+
+                if (iOne == iTwo - 1 && array[iOne] > array[iTwo]) {
+                    int val = array[iOne];
+                    array[iOne] = array[iTwo];
+                    array[iTwo] = val;
+
+                    continue out;
+                }
+
+                if (iOne == iTwo || (iOne == iTwo - 1 && array[iOne] < array[iTwo])) {
+                    QuickSort(array, left, index - 1);
+                    QuickSort(array, index + 1, right);
+                    break out;
+                }
+
+                int val = array[iOne];
+                array[iOne] = array[iTwo];
+                array[iTwo] = val;
+
+                if (iOne == index) {
+                    index = iTwo;
+                    continue;
+                }
+
+                if (iTwo == index) {
+                    index = iOne;
+                }
+            }
+        }
+    }
+
     private static int findMinValIndex(int[] array, int start, int step) {
         int index = start;
         for (int i = start; i < array.length; i += step) {

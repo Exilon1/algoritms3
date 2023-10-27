@@ -161,11 +161,34 @@ public class SortLevelTest {
     }
 
     @Test
-    void arrayChunk() {
+    void arrayChunkTest() {
         int[] arr = new int[] {7,5,6,4,3,1,2};
         int[] sortedArr = new int[] {2,1,3,4,6,5,7};
 
         assertEquals(3, SortLevel.ArrayChunk(arr));
+
+        assertEquals(sortedArr.length, arr.length);
+        for (int i = 0; i < arr.length; i++) {
+            assertEquals(sortedArr[i], arr[i]);
+        }
+    }
+
+    @Test
+    void quickSortTest() {
+        int[] arr = new int[] {5,6,4,3,1,2};
+        int[] sortedArr = new int[] {1,2,3,4,5,6};
+
+        SortLevel.QuickSort(arr, 0, arr.length - 1);
+
+        assertEquals(sortedArr.length, arr.length);
+        for (int i = 0; i < arr.length; i++) {
+            assertEquals(sortedArr[i], arr[i]);
+        }
+
+        arr = new int[] {7,5,6,4,3,1,2};
+        sortedArr = new int[] {1,2,3,4,5,6,7};
+
+        SortLevel.QuickSort(arr, 0, arr.length - 1);
 
         assertEquals(sortedArr.length, arr.length);
         for (int i = 0; i < arr.length; i++) {
