@@ -195,4 +195,27 @@ public class SortLevelTest {
             assertEquals(sortedArr[i], arr[i]);
         }
     }
+
+    @Test
+    void quickSortTailOptimizationTest() {
+        int[] arr = new int[] {5,6,4,3,1,2};
+        int[] sortedArr = new int[] {1,2,3,4,5,6};
+
+        SortLevel.QuickSortTailOptimization(arr, 0, arr.length - 1);
+
+        assertEquals(sortedArr.length, arr.length);
+        for (int i = 0; i < arr.length; i++) {
+            assertEquals(sortedArr[i], arr[i]);
+        }
+
+        arr = new int[] {7,5,6,4,3,1,2};
+        sortedArr = new int[] {1,2,3,4,5,6,7};
+
+        SortLevel.QuickSortTailOptimization(arr, 0, arr.length - 1);
+
+        assertEquals(sortedArr.length, arr.length);
+        for (int i = 0; i < arr.length; i++) {
+            assertEquals(sortedArr[i], arr[i]);
+        }
+    }
 }

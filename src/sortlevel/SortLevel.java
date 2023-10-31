@@ -2,6 +2,8 @@ package sortlevel;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -151,6 +153,61 @@ public class SortLevel {
                 }
             }
         }
+    }
+
+    public static void QuickSortTailOptimization(int[] array, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+
+        int index;
+
+        out:
+        while (true) {
+            index = (left + right + 1)/2;
+            int n = array[index];
+
+            int iOne = left;
+            int iTwo = right;
+
+            while (true) {
+                while (array[iOne] < n) {
+                    iOne++;
+                }
+
+                while (array[iTwo] > n) {
+                    iTwo--;
+                }
+
+                if (iOne == iTwo - 1 && array[iOne] > array[iTwo]) {
+                    int val = array[iOne];
+                    array[iOne] = array[iTwo];
+                    array[iTwo] = val;
+
+                    continue out;
+                }
+
+                if (iOne == iTwo || (iOne == iTwo - 1 && array[iOne] < array[iTwo])) {
+                    break out;
+                }
+
+                int val = array[iOne];
+                array[iOne] = array[iTwo];
+                array[iTwo] = val;
+
+                if (iOne == index) {
+                    index = iTwo;
+                    continue;
+                }
+
+                if (iTwo == index) {
+                    index = iOne;
+                }
+            }
+        }
+
+        QuickSortTailOptimization(array, left, index - 1);
+        QuickSortTailOptimization(array, index + 1, right);
     }
 
     private static int findMinValIndex(int[] array, int start, int step) {
