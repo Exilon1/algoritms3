@@ -106,58 +106,39 @@ public class SortLevel {
             return;
         }
 
-        out:
-        while (true) {
-            int index = (left + right + 1)/2;
-            int n = array[index];
+        int index = quickSortStep(array, left, right);
 
-            int iOne = left;
-            int iTwo = right;
+        QuickSort(array, left, index - 1);
+        QuickSort(array, index + 1, right);
+    }
 
-            while (true) {
-                while (array[iOne] < n) {
-                    iOne++;
-                }
+    public static void QuickSortTailOptimization(int[] array, int left, int right) {
 
-                while (array[iTwo] > n) {
-                    iTwo--;
-                }
+        while (left < right) {
+            int index = quickSortStep(array, left, right);
 
-                if (iOne == iTwo - 1 && array[iOne] > array[iTwo]) {
-                    int val = array[iOne];
-                    array[iOne] = array[iTwo];
-                    array[iTwo] = val;
-
-                    continue out;
-                }
-
-                if (iOne == iTwo || (iOne == iTwo - 1 && array[iOne] < array[iTwo])) {
-                    QuickSort(array, left, index - 1);
-                    QuickSort(array, index + 1, right);
-                    break out;
-                }
-
-                int val = array[iOne];
-                array[iOne] = array[iTwo];
-                array[iTwo] = val;
-
-                if (iOne == index) {
-                    index = iTwo;
-                    continue;
-                }
-
-                if (iTwo == index) {
-                    index = iOne;
-                }
+            if (index - left < right - index) {
+                QuickSortTailOptimization(array, left, index - 1);
+                left = index + 1;
+            } else {
+                QuickSortTailOptimization(array, index + 1, right);
+                right = index - 1;
             }
         }
     }
 
-    public static void QuickSortTailOptimization(int[] array, int left, int right) {
-        if (left >= right) {
-            return;
+    private static int findMinValIndex(int[] array, int start, int step) {
+        int index = start;
+        for (int i = start; i < array.length; i += step) {
+            if (array[i] < array[index]) {
+                index = i;
+            }
         }
 
+        return index;
+    }
+
+    private static int quickSortStep(int[] array, int left, int right) {
         int index;
 
         out:
@@ -201,18 +182,6 @@ public class SortLevel {
                 if (iTwo == index) {
                     index = iOne;
                 }
-            }
-        }
-
-        QuickSortTailOptimization(array, left, index - 1);
-        QuickSortTailOptimization(array, index + 1, right);
-    }
-
-    private static int findMinValIndex(int[] array, int start, int step) {
-        int index = start;
-        for (int i = start; i < array.length; i += step) {
-            if (array[i] < array[index]) {
-                index = i;
             }
         }
 
