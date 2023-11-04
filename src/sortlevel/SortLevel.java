@@ -52,53 +52,7 @@ public class SortLevel {
     }
 
     public static int ArrayChunk(int[] M) {
-        int index;
-
-        out:
-        while (true) {
-            index = M.length /2;
-            int n = M[index];
-
-            int iOne = 0;
-            int iTwo = M.length - 1;
-
-            while (true) {
-                while (M[iOne] < n) {
-                    iOne++;
-                }
-
-                while (M[iTwo] > n) {
-                    iTwo--;
-                }
-
-                if (iOne == iTwo - 1 && M[iOne] > M[iTwo]) {
-                    int val = M[iOne];
-                    M[iOne] = M[iTwo];
-                    M[iTwo] = val;
-
-                    continue out;
-                }
-
-                if (iOne == iTwo || (iOne == iTwo - 1 && M[iOne] < M[iTwo])) {
-                    break out;
-                }
-
-                int val = M[iOne];
-                M[iOne] = M[iTwo];
-                M[iTwo] = val;
-
-                if (iOne == index) {
-                    index = iTwo;
-                    continue;
-                }
-
-                if (iTwo == index) {
-                    index = iOne;
-                }
-            }
-        }
-
-        return index;
+        return quickSortStep(M, 0, M.length - 1);
     }
 
     public static void QuickSort(int[] array, int left, int right) {
@@ -125,6 +79,24 @@ public class SortLevel {
                 right = index - 1;
             }
         }
+    }
+
+    public static ArrayList KthOrderStatisticsStep(int[] Array, int L, int R, int k) {
+        ArrayList list = new ArrayList();
+
+        int index = quickSortStep(Array, L, R);
+
+        if (index == k) {
+            list.add(index);
+            list.add(index);
+            return list;
+        }
+
+        if (index < k) {
+            return KthOrderStatisticsStep(Array, index + 1, R, k);
+        }
+
+        return KthOrderStatisticsStep(Array, L, index - 1, k);
     }
 
     private static int findMinValIndex(int[] array, int start, int step) {
