@@ -237,6 +237,7 @@ public class SortLevelTest {
 
         arr = new int[] {7,5,6,4,3,1,2};
         sortedArr = new int[] {1,2,3,4,6,5,7};
+
         list = SortLevel.KthOrderStatisticsStep(arr, 0, arr.length - 1, 0);
 
         assertFalse(list.isEmpty());
@@ -249,6 +250,7 @@ public class SortLevelTest {
 
         arr = new int[] {7,5,6,4,3,1,2};
         sortedArr = new int[] {2,1,3,4,6,5,7};
+
         list = SortLevel.KthOrderStatisticsStep(arr, 0, arr.length - 1, 3);
 
         assertFalse(list.isEmpty());
