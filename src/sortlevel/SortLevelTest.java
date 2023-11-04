@@ -223,7 +223,6 @@ public class SortLevelTest {
     @Test
     void kthOrderStatisticsStepTest() {
         int[] arr = new int[] {7,5,6,4,3,1,2};
-        int[] sortedArr = new int[] {1,2,3,4,5,6,7};
 
         ArrayList list = SortLevel.KthOrderStatisticsStep(arr, 0, arr.length - 1, 6);
 
@@ -232,6 +231,7 @@ public class SortLevelTest {
             assertEquals(7, arr[(int) list.get(i)]);
         }
 
+        arr = new int[] {7,5,6,4,3,1,2};
         list = SortLevel.KthOrderStatisticsStep(arr, 0, arr.length - 1, 0);
 
         assertFalse(list.isEmpty());
@@ -239,6 +239,7 @@ public class SortLevelTest {
             assertEquals(1, arr[(int) list.get(i)]);
         }
 
+        arr = new int[] {7,5,6,4,3,1,2};
         list = SortLevel.KthOrderStatisticsStep(arr, 0, arr.length - 1, 3);
 
         assertFalse(list.isEmpty());

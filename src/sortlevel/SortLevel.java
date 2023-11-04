@@ -84,11 +84,19 @@ public class SortLevel {
     public static ArrayList KthOrderStatisticsStep(int[] Array, int L, int R, int k) {
         ArrayList list = new ArrayList();
 
+        if (L == R) {
+            list.add(L);
+            list.add(R);
+
+            return list;
+        }
+
         int index = quickSortStep(Array, L, R);
 
         if (index == k) {
             list.add(index);
             list.add(index);
+
             return list;
         }
 
@@ -115,7 +123,7 @@ public class SortLevel {
 
         out:
         while (true) {
-            index = (left + right + 1)/2;
+            index = (left + right)/2;
             int n = array[index];
 
             int iOne = left;
