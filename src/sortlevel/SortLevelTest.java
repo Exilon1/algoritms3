@@ -223,6 +223,7 @@ public class SortLevelTest {
     @Test
     void kthOrderStatisticsStepTest() {
         int[] arr = new int[] {7,5,6,4,3,1,2};
+        int[] sortedArr = new int[] {2,1,3,4,5,6,7};
 
         ArrayList list = SortLevel.KthOrderStatisticsStep(arr, 0, arr.length - 1, 6);
 
@@ -230,21 +231,32 @@ public class SortLevelTest {
         for (int i = 0; i < list.size(); i++) {
             assertEquals(7, arr[(int) list.get(i)]);
         }
+        for (int i = 0; i < arr.length; i++) {
+            assertEquals(sortedArr[i], arr[i]);
+        }
 
         arr = new int[] {7,5,6,4,3,1,2};
+        sortedArr = new int[] {1,2,3,4,6,5,7};
         list = SortLevel.KthOrderStatisticsStep(arr, 0, arr.length - 1, 0);
 
         assertFalse(list.isEmpty());
         for (int i = 0; i < list.size(); i++) {
             assertEquals(1, arr[(int) list.get(i)]);
         }
+        for (int i = 0; i < arr.length; i++) {
+            assertEquals(sortedArr[i], arr[i]);
+        }
 
         arr = new int[] {7,5,6,4,3,1,2};
+        sortedArr = new int[] {2,1,3,4,6,5,7};
         list = SortLevel.KthOrderStatisticsStep(arr, 0, arr.length - 1, 3);
 
         assertFalse(list.isEmpty());
         for (int i = 0; i < list.size(); i++) {
             assertEquals(4, arr[(int) list.get(i)]);
+        }
+        for (int i = 0; i < arr.length; i++) {
+            assertEquals(sortedArr[i], arr[i]);
         }
     }
 }

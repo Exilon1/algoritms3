@@ -84,7 +84,7 @@ public class SortLevel {
     public static ArrayList KthOrderStatisticsStep(int[] Array, int L, int R, int k) {
         ArrayList list = new ArrayList();
 
-        if (L == R) {
+        if (L >= R) {
             list.add(L);
             list.add(R);
 
