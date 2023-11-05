@@ -84,13 +84,6 @@ public class SortLevel {
     public static ArrayList KthOrderStatisticsStep(int[] Array, int L, int R, int k) {
         ArrayList list = new ArrayList();
 
-        if (L >= R) {
-            list.add(L);
-            list.add(R);
-
-            return list;
-        }
-
         int index = quickSortStep(Array, L, R);
 
         if (index == k) {
@@ -101,10 +94,15 @@ public class SortLevel {
         }
 
         if (index < k) {
-            return KthOrderStatisticsStep(Array, index + 1, R, k);
+            list.add(index + 1);
+            list.add(R);
+            return list;
         }
 
-        return KthOrderStatisticsStep(Array, L, index - 1, k);
+        list.add(L);
+        list.add(index - 1);
+
+        return list;
     }
 
     private static int findMinValIndex(int[] array, int start, int step) {
