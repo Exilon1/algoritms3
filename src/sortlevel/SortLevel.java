@@ -105,6 +105,50 @@ public class SortLevel {
         return list;
     }
 
+    public static ArrayList MergeSort(ArrayList arr) {
+        if (arr.size() == 1) {
+            return arr;
+        }
+
+        ArrayList leftList = new ArrayList(arr.subList(0, (arr.size() - 1)/2 + 1));
+        ArrayList rightList = new ArrayList(arr.subList((arr.size() - 1)/2 + 1, arr.size()));
+
+        ArrayList sortedLeft = MergeSort(leftList);
+        ArrayList sortedRight = MergeSort(rightList);
+
+        ArrayList sortedList = new ArrayList<>();
+
+        int leftDelta = 0;
+        int rightDelta = 0;
+
+        for (int i = 0; i < arr.size(); i++) {
+            int left;
+            int right;
+
+            if (i - leftDelta < sortedLeft.size()) {
+                left = (int) sortedLeft.get(i - leftDelta);
+            } else {
+                left = Integer.MAX_VALUE;
+            }
+
+            if (i - rightDelta < sortedRight.size()) {
+                right = (int) sortedRight.get(i - rightDelta);
+            } else {
+                right = Integer.MAX_VALUE;
+            }
+
+            if (left > right) {
+                sortedList.add(right);
+                leftDelta++;
+            } else if (left < right) {
+                sortedList.add(left);
+                rightDelta++;
+            }
+        }
+
+        return sortedList;
+    }
+
     private static int findMinValIndex(int[] array, int start, int step) {
         int index = start;
         for (int i = start; i < array.length; i += step) {

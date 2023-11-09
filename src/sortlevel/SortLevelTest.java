@@ -3,6 +3,7 @@ package sortlevel;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -244,6 +245,29 @@ public class SortLevelTest {
 
         for (int i = 0; i < arr.length; i++) {
             assertEquals(sortedArr[i], arr[i]);
+        }
+    }
+
+    @Test
+    void mergeSortTest() {
+        ArrayList arr = new ArrayList(List.of(5,6,4,3,1,2));
+        ArrayList sortedArr = new ArrayList(List.of(1,2,3,4,5,6));
+
+        ArrayList list = SortLevel.MergeSort(arr);
+
+        assertEquals(sortedArr.size(), list.size());
+        for (int i = 0; i < list.size(); i++) {
+            assertEquals(sortedArr.get(i), list.get(i));
+        }
+
+        arr = new ArrayList(List.of(7,5,6,4,3,1,2));
+        sortedArr = new ArrayList(List.of(1,2,3,4,5,6,7));
+
+        list = SortLevel.MergeSort(arr);
+
+        assertEquals(sortedArr.size(), list.size());
+        for (int i = 0; i < list.size(); i++) {
+            assertEquals(sortedArr.get(i), list.get(i));
         }
     }
 }
