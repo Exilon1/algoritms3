@@ -260,8 +260,8 @@ public class SortLevelTest {
             assertEquals(sortedArr.get(i), list.get(i));
         }
 
-        arr = new ArrayList(List.of(7,5,6,4,3,1,2));
-        sortedArr = new ArrayList(List.of(1,2,3,4,5,6,7));
+        arr = new ArrayList(List.of(2, 1, 1, 1, 7, 6, 5, 4, 3));
+        sortedArr = new ArrayList(List.of(1, 1, 1, 2, 3, 4, 5, 6, 7));
 
         list = SortLevel.MergeSort(arr);
 

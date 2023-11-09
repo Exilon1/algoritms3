@@ -140,7 +140,7 @@ public class SortLevel {
             if (left > right) {
                 sortedList.add(right);
                 leftDelta++;
-            } else if (left < right) {
+            } else {
                 sortedList.add(left);
                 rightDelta++;
             }
