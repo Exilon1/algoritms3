@@ -270,4 +270,20 @@ public class SortLevelTest {
             assertEquals(sortedArr.get(i), list.get(i));
         }
     }
+
+    @Test
+    void heapSortTest() {
+        int[] arr = new int[] {2, 1, 1, 7, 6, 5, 4, 3};
+
+        HeapSort heapSort = new HeapSort(arr);
+
+        assertEquals(7, heapSort.GetNextMax());
+        assertEquals(6, heapSort.GetNextMax());
+        assertEquals(5, heapSort.GetNextMax());
+        assertEquals(4, heapSort.GetNextMax());
+        assertEquals(3, heapSort.GetNextMax());
+        assertEquals(2, heapSort.GetNextMax());
+        assertEquals(1, heapSort.GetNextMax());
+        assertEquals(1, heapSort.GetNextMax());
+    }
 }
