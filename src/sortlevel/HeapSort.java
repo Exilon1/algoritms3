@@ -5,9 +5,13 @@ class HeapSort {
     public Heap HeapObject = new Heap();
 
     public HeapSort(int[] arr) {
-        int size = (int) (Math.log(arr.length) / Math.log(2));
+        int depth = (int) (Math.log(arr.length) / Math.log(2));
 
-        HeapObject.MakeHeap(arr, size);
+        HeapObject.MakeHeap(new int[0], depth);
+
+        for (int i = 0; i < arr.length; i++) {
+            HeapObject.Add(arr[i]);
+        }
     }
 
     public int GetNextMax() {
