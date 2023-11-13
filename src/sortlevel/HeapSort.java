@@ -1,6 +1,6 @@
 package sortlevel;
 
-public class HeapSort {
+class HeapSort {
 
     public Heap HeapObject = new Heap();
 
