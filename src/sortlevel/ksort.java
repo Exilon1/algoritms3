@@ -20,30 +20,19 @@ public class ksort {
             return -1;
         }
 
-        String character = s.substring(0,1);
-        int num;
-
-        Pattern pattern = Pattern.compile("[a-h]");
-        Matcher matcher = pattern.matcher(character);
+        Pattern pattern = Pattern.compile("^[a-h][0-9]{2}$");
+        Matcher matcher = pattern.matcher(s);
 
         if (! matcher.find()) {
             return -1;
         }
 
-        try {
-            num = Integer.parseInt(s.substring(1,3));
-        } catch (NumberFormatException e) {
-            return -1;
-        }
+        String character = s.substring(0,1);
+        String num = s.substring(1,3);
 
         int ch = ((int) character.charAt(0)) - 97;
 
-        String result = String.valueOf(ch);
-        if (num == 0) {
-            result = result + "00";
-        } else {
-            result = result + num;
-        }
+        String result = ch + num;
 
         return Integer.parseInt(result);
     }
