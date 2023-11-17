@@ -38,7 +38,14 @@ public class ksort {
 
         int ch = ((int) character.charAt(0)) - 97;
 
-        return Integer.parseInt(String.valueOf(ch) + String.valueOf(num));
+        String result = String.valueOf(ch);
+        if (num == 0) {
+            result = result + "00";
+        } else {
+            result = result + num;
+        }
+
+        return Integer.parseInt(result);
     }
 
     public boolean add(String s) {

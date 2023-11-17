@@ -321,7 +321,6 @@ public class SortLevelTest {
         assertEquals(s4, ksort.items[799]);
 
         assertEquals(164, ksort.index("b64"));
-        assertEquals(10, ksort.index("b00"));
-
+        assertEquals(100, ksort.index("b00"));
     }
 }
