@@ -1,5 +1,6 @@
 package sortlevel;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,13 +16,14 @@ public class ksort {
         }
     }
 
-    public int index(String s) {
+    public static int index(String s) {
         if (s.length() != 3) {
             return -1;
         }
 
         String character = s.substring(0,1);
         int num;
+
         Pattern pattern = Pattern.compile("[a-h]");
         Matcher matcher = pattern.matcher(character);
 
@@ -35,9 +37,10 @@ public class ksort {
             return -1;
         }
 
-        int ch = ((int) character.charAt(0)) - 96;
+        int ch = ((int) character.charAt(0)) - 97;
 
-        return (num + 1) * ch - 1;
+
+        return Integer.parseInt(String.valueOf(ch) + String.valueOf(num));
     }
 
     public boolean add(String s) {
@@ -50,5 +53,9 @@ public class ksort {
         items[index] = s;
 
         return true;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("args = " + index("b64"));
     }
 }
