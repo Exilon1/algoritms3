@@ -7,6 +7,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SortLevelTest {
 
@@ -285,5 +286,38 @@ public class SortLevelTest {
         assertEquals(2, heapSort.GetNextMax());
         assertEquals(1, heapSort.GetNextMax());
         assertEquals(1, heapSort.GetNextMax());
+    }
+
+    @Test
+    void ksortTest() {
+        String s1 = "a00";
+        String s2 = "h00";
+        String s3 = "a99";
+        String s4 = "h99";
+
+        String s5 = "h100";
+        String s6 = "ab5";
+        String s7 = "000";
+        String s8 = "aaa";
+
+        ksort ksort = new ksort();
+
+        assertEquals(0, ksort.index(s1));
+        assertTrue(ksort.index(s2) > 0 && ksort.index(s2) < 799);
+        assertTrue(ksort.index(s3) > 0 && ksort.index(s3) < 799);
+        assertEquals(799, ksort.index(s4));
+
+        assertEquals(-1, ksort.index(s5));
+        assertEquals(-1, ksort.index(s6));
+        assertEquals(-1, ksort.index(s7));
+        assertEquals(-1, ksort.index(s8));
+
+        assertTrue(ksort.add(s1));
+        assertTrue(ksort.add(s2));
+        assertTrue(ksort.add(s3));
+        assertTrue(ksort.add(s4));
+
+        assertEquals(s1, ksort.items[0]);
+        assertEquals(s4, ksort.items[799]);
     }
 }
