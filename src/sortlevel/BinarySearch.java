@@ -32,12 +32,11 @@ public class BinarySearch {
          }
 
          if (sortedArr[index] > N) {
-             Right = index - 1;
+             Right = index == 0 ? index : index - 1;
+             return;
          }
 
-        if (sortedArr[index] < N) {
-            Left = index + 1;
-        }
+        Left = index == sortedArr.length - 1 ? index : index + 1;
     }
 
     public int GetResult() {
