@@ -343,12 +343,6 @@ public class SortLevelTest {
 
         assertEquals(0, binarySearch.Left);
         assertEquals(0, binarySearch.Right);
-        assertEquals(0, binarySearch.GetResult());
-
-        binarySearch.Step(1);
-
-        assertEquals(0, binarySearch.Left);
-        assertEquals(0, binarySearch.Right);
         assertEquals(1, binarySearch.GetResult());
 
         arr = new int[] {1,2,3,4,5,6,7};
@@ -358,12 +352,6 @@ public class SortLevelTest {
 
         assertEquals(0, binarySearch.Left);
         assertEquals(2, binarySearch.Right);
-        assertEquals(0, binarySearch.GetResult());
-
-        binarySearch.Step(0);
-
-        assertEquals(0, binarySearch.Left);
-        assertEquals(0, binarySearch.Right);
         assertEquals(0, binarySearch.GetResult());
 
         binarySearch.Step(0);
@@ -394,12 +382,6 @@ public class SortLevelTest {
 
         assertEquals(0, binarySearch.Left);
         assertEquals(0, binarySearch.Right);
-        assertEquals(0, binarySearch.GetResult());
-
-        binarySearch.Step(1);
-
-        assertEquals(0, binarySearch.Left);
-        assertEquals(0, binarySearch.Right);
         assertEquals(1, binarySearch.GetResult());
 
         arr = new int[] {1,2,3,4,5,6,7,8};
@@ -409,12 +391,6 @@ public class SortLevelTest {
 
         assertEquals(0, binarySearch.Left);
         assertEquals(2, binarySearch.Right);
-        assertEquals(0, binarySearch.GetResult());
-
-        binarySearch.Step(0);
-
-        assertEquals(0, binarySearch.Left);
-        assertEquals(0, binarySearch.Right);
         assertEquals(0, binarySearch.GetResult());
 
         binarySearch.Step(0);
@@ -436,12 +412,6 @@ public class SortLevelTest {
 
         assertEquals(4, binarySearch.Left);
         assertEquals(4, binarySearch.Right);
-        assertEquals(0, binarySearch.GetResult());
-
-        binarySearch.Step(5);
-
-        assertEquals(4, binarySearch.Left);
-        assertEquals(4, binarySearch.Right);
         assertEquals(1, binarySearch.GetResult());
 
         binarySearch.Step(5);
@@ -458,18 +428,6 @@ public class SortLevelTest {
         assertEquals(4, binarySearch.Left);
         assertEquals(7, binarySearch.Right);
         assertEquals(0, binarySearch.GetResult());
-
-        binarySearch.Step(5);
-
-        assertEquals(4, binarySearch.Left);
-        assertEquals(4, binarySearch.Right);
-        assertEquals(0, binarySearch.GetResult());
-
-        binarySearch.Step(5);
-
-        assertEquals(4, binarySearch.Left);
-        assertEquals(4, binarySearch.Right);
-        assertEquals(1, binarySearch.GetResult());
 
         binarySearch.Step(5);
 
@@ -489,12 +447,6 @@ public class SortLevelTest {
         binarySearch.Step(8);
 
         assertEquals(6, binarySearch.Left);
-        assertEquals(7, binarySearch.Right);
-        assertEquals(0, binarySearch.GetResult());
-
-        binarySearch.Step(8);
-
-        assertEquals(7, binarySearch.Left);
         assertEquals(7, binarySearch.Right);
         assertEquals(0, binarySearch.GetResult());
 
@@ -532,12 +484,6 @@ public class SortLevelTest {
 
         assertEquals(0, binarySearch.Left);
         assertEquals(0, binarySearch.Right);
-        assertEquals(0, binarySearch.GetResult());
-
-        binarySearch.Step(0);
-
-        assertEquals(0, binarySearch.Left);
-        assertEquals(0, binarySearch.Right);
         assertEquals(-1, binarySearch.GetResult());
 
         arr = new int[] {1,2};
@@ -556,12 +502,6 @@ public class SortLevelTest {
 
         assertEquals(1, binarySearch.Left);
         assertEquals(1, binarySearch.Right);
-        assertEquals(0, binarySearch.GetResult());
-
-        binarySearch.Step(2);
-
-        assertEquals(1, binarySearch.Left);
-        assertEquals(1, binarySearch.Right);
         assertEquals(1, binarySearch.GetResult());
 
         arr = new int[] {1,2};
@@ -571,12 +511,48 @@ public class SortLevelTest {
 
         assertEquals(1, binarySearch.Left);
         assertEquals(1, binarySearch.Right);
+        assertEquals(-1, binarySearch.GetResult());
+
+        arr = new int[99];
+        for (int i = 1; i < 100; i++) {
+            arr[i-1] = i;
+        }
+        binarySearch = new BinarySearch(arr);
+
+        binarySearch.Step(49);
+
+        assertEquals(0, binarySearch.Left);
+        assertEquals(48, binarySearch.Right);
         assertEquals(0, binarySearch.GetResult());
 
-        binarySearch.Step(3);
+        binarySearch.Step(49);
 
-        assertEquals(1, binarySearch.Left);
-        assertEquals(1, binarySearch.Right);
-        assertEquals(-1, binarySearch.GetResult());
+        assertEquals(25, binarySearch.Left);
+        assertEquals(48, binarySearch.Right);
+        assertEquals(0, binarySearch.GetResult());
+
+        binarySearch.Step(49);
+
+        assertEquals(37, binarySearch.Left);
+        assertEquals(48, binarySearch.Right);
+        assertEquals(0, binarySearch.GetResult());
+
+        binarySearch.Step(49);
+
+        assertEquals(43, binarySearch.Left);
+        assertEquals(48, binarySearch.Right);
+        assertEquals(0, binarySearch.GetResult());
+
+        binarySearch.Step(49);
+
+        assertEquals(46, binarySearch.Left);
+        assertEquals(48, binarySearch.Right);
+        assertEquals(0, binarySearch.GetResult());
+
+        binarySearch.Step(49);
+
+        assertEquals(48, binarySearch.Left);
+        assertEquals(48, binarySearch.Right);
+        assertEquals(1, binarySearch.GetResult());
     }
 }

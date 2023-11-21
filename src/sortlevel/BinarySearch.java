@@ -16,14 +16,6 @@ public class BinarySearch {
     }
 
     public void Step(int N) {
-        if ((Left == Right) && sortedArr[Right] == N) {
-            found = true;
-            return;
-        } else if ((Left == Right) && sortedArr[Right] != N) {
-            found = false;
-            return;
-        }
-
         int index = (Left + Right)/2;
 
          if (sortedArr[index] == N) {
@@ -33,10 +25,17 @@ public class BinarySearch {
 
          if (sortedArr[index] > N) {
              Right = index == 0 ? index : index - 1;
-             return;
          }
 
-        Left = index == sortedArr.length - 1 ? index : index + 1;
+        if (sortedArr[index] < N) {
+            Left = index == sortedArr.length - 1 ? index : index + 1;
+        }
+
+        if ((Left == Right) && sortedArr[Right] == N) {
+            found = true;
+        } else if ((Left == Right) && sortedArr[Right] != N) {
+            found = false;
+        }
     }
 
     public int GetResult() {
