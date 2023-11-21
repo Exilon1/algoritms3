@@ -363,6 +363,21 @@ public class SortLevelTest {
         arr = new int[] {1,2,3,4,5,6,7};
         binarySearch = new BinarySearch(arr);
 
+        binarySearch.Step(8);
+
+        assertEquals(4, binarySearch.Left);
+        assertEquals(6, binarySearch.Right);
+        assertEquals(0, binarySearch.GetResult());
+
+        binarySearch.Step(8);
+
+        assertEquals(6, binarySearch.Left);
+        assertEquals(6, binarySearch.Right);
+        assertEquals(-1, binarySearch.GetResult());
+
+        arr = new int[] {1,2,3,4,5,6,7};
+        binarySearch = new BinarySearch(arr);
+
         binarySearch.Step(4);
 
         assertEquals(0, binarySearch.Left);
