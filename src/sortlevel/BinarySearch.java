@@ -28,7 +28,7 @@ public class BinarySearch {
          }
 
         if (sortedArr[index] < N) {
-            Left = index == sortedArr.length - 1 ? index : index + 1;
+            Left = index + 1;
         }
 
         if (((Left == Right) && sortedArr[Right] == N) ||
