@@ -463,12 +463,6 @@ public class SortLevelTest {
 
         assertEquals(6, binarySearch.Left);
         assertEquals(7, binarySearch.Right);
-        assertEquals(0, binarySearch.GetResult());
-
-        binarySearch.Step(8);
-
-        assertEquals(7, binarySearch.Left);
-        assertEquals(7, binarySearch.Right);
         assertEquals(1, binarySearch.GetResult());
 
         arr = new int[] {1};
@@ -569,5 +563,23 @@ public class SortLevelTest {
         assertEquals(48, binarySearch.Left);
         assertEquals(48, binarySearch.Right);
         assertEquals(1, binarySearch.GetResult());
+
+        arr = new int[10];
+        for (int i = 0; i < 10; i++) {
+            arr[i] = i*2;
+        }
+        binarySearch = new BinarySearch(arr);
+
+        binarySearch.Step(5);
+
+        assertEquals(0, binarySearch.Left);
+        assertEquals(3, binarySearch.Right);
+        assertEquals(0, binarySearch.GetResult());
+
+        binarySearch.Step(5);
+
+        assertEquals(2, binarySearch.Left);
+        assertEquals(3, binarySearch.Right);
+        assertEquals(-1, binarySearch.GetResult());
     }
 }

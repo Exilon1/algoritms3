@@ -31,9 +31,16 @@ public class BinarySearch {
             Left = index == sortedArr.length - 1 ? index : index + 1;
         }
 
-        if ((Left == Right) && sortedArr[Right] == N) {
+        if (((Left == Right) && sortedArr[Right] == N) ||
+                (Right - Left == 1 && sortedArr[Left] == N) ||
+                (Right - Left == 1 && sortedArr[Right] == N)) {
             found = true;
-        } else if ((Left == Right) && sortedArr[Right] != N) {
+            return;
+        }
+
+        if (((Left == Right) && sortedArr[Right] != N) ||
+                (Right - Left == 1 && sortedArr[Left] != N) ||
+                (Right - Left == 1 && sortedArr[Right] != N)) {
             found = false;
         }
     }
