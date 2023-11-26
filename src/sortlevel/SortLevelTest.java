@@ -616,6 +616,6 @@ public class SortLevelTest {
 
         binarySearch = new BinarySearch(arr);
 
-        assertFalse(binarySearch.GallopingSearch(arr, 5));
+        assertFalse(binarySearch.GallopingSearch(arr, 9));
     }
 }
