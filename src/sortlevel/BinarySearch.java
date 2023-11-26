@@ -1,5 +1,7 @@
 package sortlevel;
 
+import java.math.BigInteger;
+
 public class BinarySearch {
 
     public int Left;
@@ -55,5 +57,39 @@ public class BinarySearch {
         }
 
         return -1;
+    }
+
+    public boolean GallopingSearch(int[] sortedArr, int N) {
+        int maxIndex = (int) (Math.log(sortedArr.length + 1) / Math.log(2) + 1);
+
+        for (int i = 1; i <= maxIndex; i++) {
+            int index = new BigInteger(String.valueOf(2)).pow(i).subtract(BigInteger.valueOf(2)).intValue();
+
+            if (index > sortedArr.length - 1) {
+                index = sortedArr.length - 1;
+            }
+
+            if (sortedArr[index] == N) {
+                return true;
+            }
+
+            if (sortedArr[index] < N) {
+                continue;
+            }
+
+            if (sortedArr[index] > N) {
+                Right = index;
+                Left = new BigInteger(String.valueOf(2)).pow(i - 1).subtract(BigInteger.valueOf(1)).intValue();
+                break;
+            }
+        }
+
+        this.sortedArr = sortedArr;
+
+        while (found == null) {
+            Step(N);
+        }
+
+        return found;
     }
 }

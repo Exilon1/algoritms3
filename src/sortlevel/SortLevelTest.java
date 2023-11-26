@@ -582,4 +582,40 @@ public class SortLevelTest {
         assertEquals(3, binarySearch.Right);
         assertEquals(-1, binarySearch.GetResult());
     }
+
+    @Test
+    void gallopingSearchTest() {
+        int[] arr = new int[99];
+        for (int i = 1; i < 100; i++) {
+            arr[i-1] = i;
+        }
+        BinarySearch binarySearch = new BinarySearch(arr);
+
+        assertTrue(binarySearch.GallopingSearch(arr, 1));
+
+        binarySearch = new BinarySearch(arr);
+
+        assertTrue(binarySearch.GallopingSearch(arr, 50));
+
+        binarySearch = new BinarySearch(arr);
+
+        assertTrue(binarySearch.GallopingSearch(arr, 99));
+
+        binarySearch = new BinarySearch(arr);
+
+        assertFalse(binarySearch.GallopingSearch(arr, 0));
+
+        binarySearch = new BinarySearch(arr);
+
+        assertFalse(binarySearch.GallopingSearch(arr, 100));
+
+        arr = new int[10];
+        for (int i = 0; i < 10; i++) {
+            arr[i] = i*2;
+        }
+
+        binarySearch = new BinarySearch(arr);
+
+        assertFalse(binarySearch.GallopingSearch(arr, 5));
+    }
 }
